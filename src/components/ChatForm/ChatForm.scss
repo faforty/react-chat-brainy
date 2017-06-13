@@ -1,0 +1,19 @@
+.chat-form {
+  position: relative;
+}
+.chat-form__field {
+  padding: 15px 25px;
+  border: 0;
+  outline: none;
+  width: 100%;
+}
+.chat-form__btn {
+  position: absolute;
+  top: 5px;
+  right: 20px;
+  transition: color ease .3s;
+}
+.chat-form__btn--active {
+  color: #0095dc;
+  cursor: pointer;
+}

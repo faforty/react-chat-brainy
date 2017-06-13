@@ -1,0 +1,37 @@
+.message {
+  display: flex;
+  margin-bottom: 10px;
+}
+.message:first-child {
+  margin-top: 80px;
+}
+.message--me {
+  justify-content: flex-end;
+
+  .message__box {
+    background-color: #e5e5e5;
+  }
+}
+.message__avatar,
+.message__box {
+  display: flex;
+}
+.message__avatar {
+  flex: 0 0 auto;
+  width: 50px;
+
+  & > div {
+    height: 30px;
+    width: 30px;
+  }
+}
+.message__box {
+  margin: 0 10px;
+  padding: 13px 15px;
+  font-size: 13px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  border-bottom: 1px solid rgba(230, 230, 230, 0.7);
+  box-shadow: 0 10px 10px 0px rgba(0, 0, 0, 0.01);
+  width: 250px;
+}

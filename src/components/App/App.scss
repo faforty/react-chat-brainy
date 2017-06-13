@@ -1,0 +1,23 @@
+.app-header {
+  position: relative;
+  padding: 20px 0;
+  box-shadow: 0 10px 10px 0 rgba(0,0,0,.01);
+}
+.app-header__h1 {
+  position: relative;
+  text-align: center;
+  font-weight: 400;
+  font-size: 16px;
+}
+.app-header-menu,
+.app-header-counter {
+  position: absolute;
+  top: 0;
+}
+.app-header-counter {
+  right: 25px;
+}
+.app-header-menu {
+  top: -10px;
+  left: 25px;
+}
