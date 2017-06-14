@@ -1,12 +1,15 @@
 // import 'babel-polyfill'
 import React from 'react'
 import { render } from 'react-dom'
-// import { Provider } from 'react-redux'
-// import configureStore from './store/configureStore'
+import { Provider } from 'react-redux'
+import configureStore from './store/configureStore'
 import App from './components/App/App'
 
-// const store = configureStore()
+const store = configureStore()
 
-render(<App />,
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('app')
 )
