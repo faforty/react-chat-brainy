@@ -50,6 +50,7 @@
     "eslint-plugin-standard": "^3.0.1",
     "eventsource-polyfill": "^0.9.6",
     "extract-text-webpack-plugin": "^2.1.2",
+    "fs-extra": "^3.0.1",
     "html-webpack-plugin": "^2.24.1",
     "node-sass": "^4.5.3",
     "react-addons-test-utils": "^15.5.1",
