@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { IconButton } from 'react-toolbox/lib/button'
 import Drawer from 'react-toolbox/lib/drawer'
 import { List, ListItem } from 'react-toolbox/lib/list'
@@ -46,7 +47,7 @@ class App extends React.Component {
         <header className="app-header">
           <h1 className="app-header__h1">Chat / briff
             <IconButton className="app-header-menu" icon="menu" onClick={this.handleDrawerToggle} />
-            <div className="app-header-counter">1 / 11</div>
+            <div className="app-header-counter">{this.props.steps} / 11</div>
           </h1>
         </header>
         <Messages messages={this.state.messages} user={this.state.users} />
@@ -62,4 +63,10 @@ class App extends React.Component {
   }
 }
 
-export default App
+function mapStateProps (state) {
+  return {
+    steps: state.step
+  }
+}
+
+export default connect(mapStateProps)(App)

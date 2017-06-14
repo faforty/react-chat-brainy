@@ -2,7 +2,8 @@ import { combineReducers } from 'redux'
 
 const initialState = {
   user: null,
-  messages: []
+  messages: [],
+  steps: 1
 }
 
 export function user (state = initialState.user) {
@@ -24,7 +25,19 @@ export function messages (state = initialState.messages, action) {
   return state
 }
 
+export function steps (state = initialState.steps, action) {
+  switch (action.type) {
+    case 'SET_STEP':
+    console.log(state);
+      return state + 1
+      break;
+    default:
+      return state
+  }
+}
+
 export default combineReducers({
   user: user,
-  messages: messages
+  messages: messages,
+  step: steps
 })

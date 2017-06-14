@@ -92,6 +92,7 @@ function mapDispatchToProps (dispath) {
   return {
     addMessage: (text) => {
       dispath(actions.addMessage(text))
+      dispath(actions.setStep(1))
     }
   }
 }
