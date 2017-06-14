@@ -1,4 +1,7 @@
 import React from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as actions from '../../store/actions'
 import { IconButton } from 'react-toolbox/lib/button'
 import { Snackbar } from 'react-toolbox/lib/snackbar'
 
@@ -33,15 +36,15 @@ class ChatForm extends React.Component {
       })
     }
 
-    this.props.handleMessage({
-      from: 0,
-      message: this.state.value
+    this.props.addMessage({
+      message: this.state.value,
+      from: 0
     })
 
     setTimeout(() => {
-      this.props.handleMessage({
-        from: 1,
-        message: 'sdfsdf'
+      this.props.addMessage({
+        message: 'sfsdfsdf',
+        from: 1
       })
     }, 2000)
 
@@ -85,4 +88,12 @@ class ChatForm extends React.Component {
   }
 }
 
-export default ChatForm
+function mapDispatchToProps (dispath) {
+  return {
+    addMessage: (text) => {
+      dispath(actions.addMessage(text))
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(ChatForm)

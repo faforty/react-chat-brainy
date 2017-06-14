@@ -34,15 +34,6 @@ class App extends React.Component {
     drawer: false
   }
 
-  onHandleMessage = (message) => {
-    let messages = this.state.messages
-    messages.push(message)
-
-    this.setState({
-      messages: messages
-    })
-  }
-
   handleDrawerToggle = () => {
     this.setState({
       drawer: !this.state.drawer

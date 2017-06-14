@@ -1,5 +1,6 @@
 import React from 'react'
 import Message from '../../components/Message'
+import { connect } from 'react-redux'
 
 import './Messages.scss'
 
@@ -7,15 +8,13 @@ class Messages extends React.Component {
 
   constructor (props) {
     super(props)
-
-    this.messages = props.messages
   }
 
   getMessages () {
     let messages = [],
       preventUser = null
 
-    this.messages.forEach((message, index) => {
+    this.props.messages.forEach((message, index) => {
       messages.push(<Message key={index} message={message} avatar={preventUser ? false : true} />)
 
       if (preventUser !== message.from) preventUser = message.from
@@ -33,4 +32,10 @@ class Messages extends React.Component {
   }
 }
 
-export default Messages
+function mapStateProps (state) {
+  return {
+    messages: state.messages
+  }
+}
+
+export default connect(mapStateProps)(Messages)

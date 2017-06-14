@@ -9,6 +9,22 @@ export function user (state = initialState.user) {
   return state
 }
 
+export function messages (state = initialState.messages, action) {
+  switch (action.type) {
+    case 'ADD_MESSAGE':
+      return [
+        ...state,
+        action.message
+      ]
+      break;
+    default:
+
+  }
+
+  return state
+}
+
 export default combineReducers({
-  user: user
+  user: user,
+  messages: messages
 })
