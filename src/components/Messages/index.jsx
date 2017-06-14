@@ -1,4 +1,5 @@
 import React from 'react'
+import { CSSTransitionGroup } from 'react-transition-group'
 import Message from '../../components/Message'
 import { connect } from 'react-redux'
 
@@ -26,7 +27,12 @@ class Messages extends React.Component {
   render () {
     return (
       <div id="messages" className="messages">
-        {this.getMessages()}
+        <CSSTransitionGroup
+          transitionName="messagesUp"
+          transitionEnterTimeout={500}
+          transitionLeave={false}>
+          {this.getMessages()}
+        </CSSTransitionGroup>
       </div>
     )
   }

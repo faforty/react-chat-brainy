@@ -5,3 +5,12 @@
   overflow-y: auto;
   height: 50vh;
 }
+.messagesUp-enter {
+  transform: translateY(10px);
+  opacity: 0.01;
+}
+.messagesUp-enter.messagesUp-enter-active {
+  transform: translateY(0px);
+  opacity: 1;
+  transition: all ease .3s;
+}
