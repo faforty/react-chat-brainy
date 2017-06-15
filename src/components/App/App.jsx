@@ -5,6 +5,8 @@ import Drawer from 'react-toolbox/lib/drawer'
 import { List, ListItem } from 'react-toolbox/lib/list'
 import Messages from '../../components/Messages'
 import ChatForm from '../../components/ChatForm'
+import FinishBox from '../../components/FinishBox'
+import { CSSTransitionGroup } from 'react-transition-group'
 
 import '../../styles/main.scss'
 import './App.scss'
@@ -51,13 +53,19 @@ class App extends React.Component {
           </h1>
         </header>
         <Messages messages={this.state.messages} user={this.state.users} />
-        <ChatForm handleMessage={this.onHandleMessage} />
+        <ChatForm handleMessage={this.onHandleMessage} action={this.props.action} />
         <Drawer active={this.state.drawer} onOverlayClick={this.handleDrawerToggle}>
           <List selectable ripple>
             <ListItem caption="Главная" leftIcon="home" />
             <ListItem caption="О нас" leftIcon="info" />
           </List>
         </Drawer>
+        <CSSTransitionGroup
+          transitionName="finishBoxShow"
+          transitionEnterTimeout={300}
+          transitionLeave={false}>
+          {(this.props.action === 'finish') && <FinishBox />}
+        </CSSTransitionGroup>
       </div>
     )
   }
@@ -65,7 +73,8 @@ class App extends React.Component {
 
 function mapStateProps (state) {
   return {
-    steps: state.step
+    steps: state.step,
+    action: state.action
   }
 }
 

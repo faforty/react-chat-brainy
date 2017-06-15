@@ -1,6 +1,11 @@
 .chat-form {
   position: relative;
 }
+.chat-form--acceptTerms {
+  padding: 15px 25px;
+  background-color: #0057e7;
+  color: #ffffff;
+}
 .chat-form__field {
   padding: 15px 25px;
   border: 0;

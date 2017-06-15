@@ -10,6 +10,7 @@ class Message extends React.Component {
   }
 
   render () {
+    // if (this.props.message.type === '')
     return (
       <div className={'message ' +
       (this.props.message.from === 0 && 'message--me')}>

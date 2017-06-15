@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import * as actions from '../../store/actions'
 import { IconButton } from 'react-toolbox/lib/button'
 import { Snackbar } from 'react-toolbox/lib/snackbar'
+import Checkbox from 'react-toolbox/lib/checkbox'
+import AcceptTerms from './AcceptTerms'
 
 import './ChatForm.scss'
 
@@ -11,7 +13,8 @@ class ChatForm extends React.Component {
 
   state = {
     snackBar: false,
-    value: ''
+    value: '',
+    acceptTerms: false
   }
 
   isText () {
@@ -34,6 +37,10 @@ class ChatForm extends React.Component {
       return this.setState({
         snackBar: true
       })
+    }
+
+    if (this.state.value.match(/#action (.*)/i)) {
+      this.props.setAction(this.state.value.match(/#action (.*)/i)[1])
     }
 
     this.props.addMessage({
@@ -61,7 +68,27 @@ class ChatForm extends React.Component {
     })
   }
 
+  handleAcceptTerms = () => {
+    let isChecked = !this.state.acceptTerms
+
+    this.setState({
+      acceptTerms: isChecked
+    })
+
+    if (isChecked) {
+      this.props.setAction('finish')
+    }
+  }
+
   render () {
+    if (this.props.action === 'acceptTerms') {
+      return (
+        <div className="chat-form chat-form--acceptTerms">
+          <AcceptTerms checked={this.state.acceptTerms} handleAcceptTerms={this.handleAcceptTerms} />
+        </div>
+      )
+    }
+
     return (
       <form className="chat-form" onSubmit={this.handleSend}>
         <input
@@ -93,6 +120,9 @@ function mapDispatchToProps (dispath) {
     addMessage: (text) => {
       dispath(actions.addMessage(text))
       dispath(actions.setStep(1))
+    },
+    setAction: (type) => {
+      dispath(actions.setAction(type))
     }
   }
 }
